@@ -279,6 +279,10 @@ def Denoise(parameters: dict=None):
 		for key in parameters.keys():
 			args.append("--"+str(key)+"="+str(parameters[key]))
 		opt = parser.parse_args(args)
+		if opt.nThreads != 0:
+			print(Colors.Colors.RED + "WARNING - " + Colors.Colors.RESET + " nThreads != 0 when called from script." +
+									" This might generate an error. It'll be fixed in futur release. Use command " +
+									"line or set nThreads to 0.\n")
 	else: # Running from command line
 		opt = parser.parse_args()
 	
